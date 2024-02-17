@@ -80,10 +80,20 @@ def reverse(my_list):
     size = length(my_list) - 1;
     counter = 0;
     while  size > 0 and counter < size:
-        my_list[counter] , my_list[size] = my_list[size],my_list[counter];
-        size-=1;
-        counter+=1;
-    
-    return my_list;
+        my_list[counter] , my_list[size] = my_list[size],my_list[counter]
+        size-=1
+        counter+=1
+    return my_list
+# other solution as best practicec
+def revers_2(my_list):
+    a = 0
+    half = len(my_list)/2
+    for counter in range(len(my_list)-1,int(half),-1):
+        temp = my_list[a]
+        my_list[a] = my_list[counter]
+        my_list[counter] = temp
+        a+=1
+    print(my_list)
 
-print(reverse([1,2,3,4,5,6,7,8,9,10]))
+revers_2([1,2,3,4,5,6,7,8,9,10])
+# print(reverse([1,2,3,4,5,6,7,8,9,10]))

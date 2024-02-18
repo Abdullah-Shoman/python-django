@@ -9,9 +9,11 @@ class user:
 
     def make_deposit(self,amount):
         self.account_balance +=amount
+        return self 
 
     def make_withdrawal(self,amount):
         self.account_balance -= amount
+        return self
 
     def display_user_balance(self):
         print("User:",self.name,",Account Balance $",str(self.account_balance))
@@ -36,12 +38,10 @@ user2.make_withdrawal(200)
 user2.display_user_balance()
 # User 3
 user3 = user("smer","smer_mohammad@outlook.com")
-user3.make_deposit(1000)
-user3.make_withdrawal(10)
-user3.make_withdrawal(50)
-user3.make_withdrawal(200)
-user3.display_user_balance()
+# if i want to user chining, i should write a return self  
+user3.make_deposit(1000).make_withdrawal(10).make_withdrawal(50).make_withdrawal(200).display_user_balance()
 #  bonus 
+print("after transfer money from user1 to user2")
 user1.transfer_money(user2,50)
 user1.display_user_balance()
 user2.display_user_balance()

@@ -1,0 +1,25 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.continer{
+    margin: 0px auto;
+}
+h1{
+    text-align: center;
+}
+
+div{
+    width: 400px;
+    height: 40px;
+}
+.color1{
+    background-color: greenyellow;
+}
+.color2{
+    background-color: green;
+}
+.dis-flex{
+    display: flex;
+}

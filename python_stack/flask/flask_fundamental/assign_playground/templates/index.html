@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>playground</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                margin: 0px auto;
+                padding: 10px;
+                text-align: center;
+                background-color:#ffffff;
+                width: 900px;
+            }
+            div{
+                border: 2px solid black;
+                width: 200px;
+                height: 200px;
+                margin: 20px;
+                background-color: {{color}};
+            }
+            section{
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Welcome!</h1>
+        <p> Times {{times}}</p>
+        <p>Color {{color}}</p>
+        <section>
+            {% for counter in range(0,times): %}
+                <div ></div>
+            {% endfor%}
+        </section>
+        
+        
+    </body>
+</html>

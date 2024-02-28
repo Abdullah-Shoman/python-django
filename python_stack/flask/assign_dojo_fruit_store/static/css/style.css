@@ -1,0 +1,10 @@
+
+.image{
+    width: 20%;
+    height: 20%;
+    transition: transform .2s; 
+}
+
+.image:hover{
+    transform: scale(1.5)
+}

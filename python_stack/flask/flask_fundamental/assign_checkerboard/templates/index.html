@@ -1,24 +1,34 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>checkerBoard</title>
+        <title>Checker Board</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="{{url_for('static',filename = 'style.css')}}">
+        <link rel="stylesheet" href="{{url_for('static',filename='style.css')}}">
+        <style>
+            .color1{
+                background-color: {{color1}};
+            }
+            .color2{
+                background-color: {{color2}};
+            }
+            table tr,td {
+                width: 50px;
+                height: 50px;
+            }
+        </style>
     </head>
     <body>
-        <div class="continer">
-            <h1>checkerBoard</h1>
-            {% for counter1 in range(0,row):%}
-                <section class = "dis-flex">
-                    {%for counter2 in range(0,col)%}
-                            <div class="color{{(counter1+counter2)%2+1}}"></div>
+        <table>
+            {%for counter1 in range(0,num2):%}
+                <tr>
+                    {%for counter2 in range(0,num):%}
+                    <td class="color{{(counter1+counter2)%2+1}}"></td>
                     {%endfor%}
-                </section>
+                </tr>
             {%endfor%}
-        </div>
+        </table>
     </body>
 </html>

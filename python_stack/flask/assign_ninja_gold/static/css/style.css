@@ -1,0 +1,12 @@
+.lose{
+    color: red;
+}
+
+.win{
+    color: green;
+}
+
+.over{
+    height: 200px;
+    overflow: scroll;
+}

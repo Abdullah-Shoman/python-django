@@ -23,5 +23,5 @@ def destory(request,number):
     return redirect(index)
 
 def jason(request):
-    return JsonResponse({'key':" hi Json",
-                        "status" : True})
+    return JsonResponse({'title':"My first Blog",
+                        "content" : " this is the first blog using Django"})

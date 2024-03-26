@@ -1,0 +1,56 @@
+(py3Env) ➜  user_shell_project python manage.py shell
+Python 3.11.7 (main, Dec  4 2023, 18:10:11) [Clang 15.0.0 (clang-1500.1.0.2.5)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from user_app.models import *
+>>> User.objects.all()
+<QuerySet []>
+>>> User.objects.create(first_name = 'abdullah' , last_name = 'shoman' , email = 'abo.kannh7@gmail.com' , age = 28)
+<User: User object (1)>
+>>> User.objects.create(first_name = 'Ahmad' , last_name = 'Naser' , email = 'ahmad.n9@gmail.com' , age = 22)
+<User: User object (2)>
+>>> User.objects.create(first_name = 'samer' , last_name = 'mohammad' , email = 'mohammad.s@gmail.com' , age = 20)
+<User: User object (3)>
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (2)>, <User: User object (3)>]>
+>>> User.objects.all().first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'first_name'
+>>> User.objects.first()
+<User: User object (1)>
+>>> User.objects.first().first_name
+'abdullah'
+>>> User.objects.last().first_name
+'samer'
+>>> User.objects.get(id =2).first_name
+'Ahmad'
+>>> User.objects.get(id =2).last_name = 'Pancakes'
+>>> User.objects.get(id =2).last_name
+'Naser'
+>>> User.objects.get(id =2).last_name = 'Pancakes'.save()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'str' object has no attribute 'save'
+>>> user2 = User.objects.get(id =2)
+>>> user2.last_name = 'Pancakes'
+>>> user2.save()
+>>> user2.last_name
+'Pancakes'
+>>> user2.delete()
+(1, {'user_app.User': 1})
+>>> User.objects.all()
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+>>> User.objects.all().order_by(first_name)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'first_name' is not defined
+>>> User.objects.all().order_by('first_name')
+<QuerySet [<User: User object (1)>, <User: User object (3)>]>
+>>> User.objects.all().order_by('first_name').first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'first_name'
+>>> User.objects.all().order_by('-first_name')
+<QuerySet [<User: User object (3)>, <User: User object (1)>]>
+>>>exit()

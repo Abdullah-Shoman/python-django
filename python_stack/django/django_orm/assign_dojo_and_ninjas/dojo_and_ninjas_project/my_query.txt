@@ -1,0 +1,330 @@
+(py3Env) ➜  dojo_and_ninjas_project python manage.py shell
+Python 3.11.7 (main, Dec  4 2023, 18:10:11) [Clang 15.0.0 (clang-1500.1.0.2.5)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_app.models import *
+>>> Dojo.objects.all
+<bound method BaseManager.all of <django.db.models.manager.Manager object at 0x103301090>>
+>>> Dojo.objects.all()
+<QuerySet []>
+>>> Ninja.objects.all()
+<QuerySet []>
+>>> Dojo.objects.create(name = 'abdullah' city = 'LasVegas' state = 'NV')
+  File "<console>", line 1
+    Dojo.objects.create(name = 'abdullah' city = 'LasVegas' state = 'NV')
+                               ^^^^^^^^^^^^^^^
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+>>> Dojo.objects.create(name = 'abdullah', city = 'LasVegas' ,state = 'NV')
+<Dojo: Dojo object (1)>
+>>> Dojo.objects.create(name = 'DonLitto', city = 'Atlanta' ,state = 'GA')
+<Dojo: Dojo object (2)>
+>>> Dojo.objects.create(name = 'DonLitto', city = 'Hilo' ,state = 'HI')
+<Dojo: Dojo object (3)>
+>>> dojo1 = Dojo.objects.get(id = 3)
+>>> dojo1.name
+'DonLitto'
+>>> dojo1.delete()
+(1, {'dojo_app.Ninja': 0, 'dojo_app.Dojo': 1})
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: Dojo object (1)>, <Dojo: Dojo object (2)>]>
+>>> Ninja.object.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: type object 'Ninja' has no attribute 'object'
+>>> Ninja.objects.all()
+<QuerySet []>
+>>> Ninja.objects.create(first_name = "Abood",last_name = "mohammad" )
+Traceback (most recent call last):
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: dojo_app_ninja.dojo_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/query.py", line 422, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/base.py", line 740, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/base.py", line 777, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/base.py", line 870, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/base.py", line 907, in _do_insert
+    return manager._insert([self], fields=fields, return_id=update_pk,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/sql/compiler.py", line 1335, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/utils.py", line 80, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: dojo_app_ninja.dojo_id
+>>> Ninja.objects.create(first_name = "Abood",last_name = "mohammad", dojo = Dojo.objects.get(id=1))
+<Ninja: Ninja object (1)>
+>>> Dojo.ninjas.all()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ReverseManyToOneDescriptor' object has no attribute 'all'
+>>> Dojo.ninjas.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'ReverseManyToOneDescriptor' object has no attribute 'first_name'
+>>> Dojo.objects.ninjas.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'Manager' object has no attribute 'ninjas'
+>>> ninja1 = Ninja.objects.get(id=1)
+>>> ninja1.first_name
+'Abood'
+>>> ninja1.dojo
+<Dojo: Dojo object (1)>
+>>> ninja1.dojo.name
+'abdullah'
+>>> Dojo.objects.create(name = 'samer', city = 'Hilo' ,state = 'HI')
+<Dojo: Dojo object (4)>
+>>> Dojo.objects.create(name = 'Michal', city = 'Atlanta' ,state = 'GA')
+<Dojo: Dojo object (5)>
+>>> Dojo.objects.create(name = 'Jimmiy', city = 'LasVegas' ,state = 'NV')
+<Dojo: Dojo object (6)>
+>>> dojo1.name
+'DonLitto'
+>>> dojo1 = Dojo.objects.get(id=1)
+>>> Ninja.objects.all()
+<QuerySet [<Ninja: Ninja object (1)>]>
+>>> Ninja.objects.create(first_name = 'Kalli' , last_name = "kaven" , dojo = dojo1)
+<Ninja: Ninja object (2)>
+>>> Ninja.objects.create(first_name = 'Ahmad' , last_name = "nuzha" , dojo = dojo1)
+<Ninja: Ninja object (3)>
+>>> dojo2 = Dojo.objects.get(id=2)
+>>> Ninja.objects.create(first_name = 'Ahmad' , last_name = "Obaid" , dojo = dojo2)
+<Ninja: Ninja object (4)>
+>>> Ninja.objects.create(first_name = 'Ahmad' , last_name = "Drubi" , dojo = dojo2)
+<Ninja: Ninja object (5)>
+>>> Ninja.objects.create(first_name = 'Ahmad' , last_name = "Nasri" , dojo = dojo2)
+<Ninja: Ninja object (6)>
+>>> dojo3 = Dojo.objects.get(id=3)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/donlitto/Documents/FullStackDev_course/python_fundamental/python-django/python_stack/my_environments/py3Env/lib/python3.11/site-packages/django/db/models/query.py", line 406, in get
+    raise self.model.DoesNotExist(
+dojo_app.models.Dojo.DoesNotExist: Dojo matching query does not exist.
+>>> dojo3 = Dojo.objects.get(id=4)
+>>> Dojo.objects.all()
+<QuerySet [<Dojo: Dojo object (1)>, <Dojo: Dojo object (2)>, <Dojo: Dojo object (4)>, <Dojo: Dojo object (5)>, <Dojo: Dojo object (6)>]>
+>>> Ninja.objects.create(first_name = 'Noor' , last_name = "Mousa" , dojo = dojo3)
+<Ninja: Ninja object (7)>
+>>> Ninja.objects.create(first_name = 'Dana' , last_name = "mohammad" , dojo = dojo3)
+<Ninja: Ninja object (8)>
+>>> Ninja.objects.create(first_name = 'Rand' , last_name = "Amjad" , dojo = dojo3)
+<Ninja: Ninja object (9)>
+>>> ninja1 = ninja.objects.first
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'ninja' is not defined
+>>> ninja1 = Ninja.objects.first
+>>> ninja1.Dojo
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'Dojo'
+>>> ninja1.dojo
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'dojo'
+>>> ninja1.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'function' object has no attribute 'first_name'
+>>> ninja1 = ninja.objects.first()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'ninja' is not defined
+>>> ninja1 = Ninja.objects.first()
+>>> ninja1.first_name
+'Abood'
+>>> ninja1.dojo
+<Dojo: Dojo object (1)>
+>>> dojo1.ninjas
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x103301a50>
+>>> dojo1.ninjas.all()
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>]>
+>>> for ninja in dojo1.ninjas.all()
+  File "<console>", line 1
+    for ninja in dojo1.ninjas.all()
+                                  ^
+SyntaxError: expected ':'
+>>> for ninja in dojo1.ninjas.all():
+... dojo1.ninjas.first_name
+  File "<console>", line 2
+    dojo1.ninjas.first_name
+    ^^^^^
+IndentationError: expected an indented block after 'for' statement on line 1
+>>> for ninja in dojo1.ninjas.all():
+... ninja.first_name
+  File "<console>", line 2
+    ninja.first_name
+    ^^^^^
+IndentationError: expected an indented block after 'for' statement on line 1
+>>> for ninja in dojo1.ninjas.all():
+...     ninja.first_name
+...     print(ninja.first_name)
+...
+'Abood'
+Abood
+'Kalli'
+Kalli
+'Ahmad'
+Ahmad
+>>> dojo4 = Dojo.objects.get(id=4)
+>>> dojo4.ninjas
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x103301b90>
+>>> for ninja in dojo4.ninjas.all():
+...     print(ninja.first_name + ninja.last_name)
+...
+NoorMousa
+Danamohammad
+RandAmjad
+>>> ninja3 = Ninja.objects.filter(dojo = '4' )
+>>> for ninja for ninja3:
+  File "<console>", line 1
+    for ninja for ninja3:
+              ^^^
+SyntaxError: invalid syntax
+>>> for ninja in ninja3:
+...     print(ninja.name)
+...
+Traceback (most recent call last):
+  File "<console>", line 2, in <module>
+AttributeError: 'Ninja' object has no attribute 'name'
+>>> for ninja in ninja3.dojo:
+...     print(ninja.name)
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'dojo'
+>>> ninja3
+<QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+>>> for ninja in ninja3.objects.dojo:
+...     print(ninja)
+...
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'objects'
+>>> ninja3.first_name
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'first_name'
+>>> ninja3
+<QuerySet [<Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+>>> ninja3.objects.first()
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+AttributeError: 'QuerySet' object has no attribute 'objects'
+>>> ninja3.first()
+<Ninja: Ninja object (7)>
+>>> for ninja in ninja3.all():
+...     print(ninja.dojo.name)
+...
+samer
+samer
+samer
+>>> dojo4 = Dojo.objects.last()
+>>> dojo4.ninjas
+<django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x1033014d0>
+>>> dojo4.ninjas.all
+<bound method BaseManager.all of <django.db.models.fields.related_descriptors.create_reverse_many_to_one_manager.<locals>.RelatedManager object at 0x1033019d0>>
+>>> dojo4.ninjas.all()
+<QuerySet []>
+>>> exit()
+(py3Env) ➜  dojo_and_ninjas_project python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> old_dojo
+Invalid input: name 'old_dojo' is not defined
+>>>
+Please enter some code, or 'exit' (with no quotes) to exit.
+>>> desc = old_dojo
+Invalid input: invalid syntax (<string>, line 1)
+>>>
+Please enter some code, or 'exit' (with no quotes) to exit.
+>>> exit
+(py3Env) ➜  dojo_and_ninjas_project python manage.py shell
+Python 3.11.7 (main, Dec  4 2023, 18:10:11) [Clang 15.0.0 (clang-1500.1.0.2.5)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_app.models import *
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> exit()
+(py3Env) ➜  dojo_and_ninjas_project python manage.py makemigrations
+You are trying to add a non-nullable field 'desc' to dojo without a default; we can't do that (the database needs something to populate existing rows).
+Please select a fix:
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)
+ 2) Quit, and let me add a default in models.py
+Select an option: 1
+Please enter the default value now, as valid Python
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now
+Type 'exit' to exit this prompt
+>>> old dojo
+Invalid input: invalid syntax (<string>, line 1)
+>>> old
+Invalid input: name 'old' is not defined
+>>>
+Please enter some code, or 'exit' (with no quotes) to exit.
+>>> 'old'
+Migrations for 'dojo_app':
+  dojo_app/migrations/0002_dojo_desc.py
+    - Add field desc to dojo
+(py3Env) ➜  dojo_and_ninjas_project python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, contenttypes, dojo_app, sessions
+Running migrations:
+  Applying dojo_app.0002_dojo_desc... OK
+(py3Env) ➜  dojo_and_ninjas_project python manage.py shell
+Python 3.11.7 (main, Dec  4 2023, 18:10:11) [Clang 15.0.0 (clang-1500.1.0.2.5)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from dojo_app.models import *
+>>> Dojo.objects.create(name = 'manar', city = 'hilo' , state = 'HI' , desc = 'new_dojo')
+<Dojo: Dojo object (7)>
+>>>

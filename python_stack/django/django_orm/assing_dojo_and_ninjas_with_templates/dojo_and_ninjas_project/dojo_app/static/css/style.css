@@ -1,0 +1,7 @@
+body{
+    background-color: rgb(249, 209, 157);
+}
+.table{
+    --bs-table-bg: rgb(249, 209, 157);
+}
+

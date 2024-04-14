@@ -1,0 +1,15 @@
+body{
+    background-color: rgba(244, 241, 229, 0.41);
+}
+
+
+.full-width{
+    width: 100%;
+}
+.message{
+    background-color:rgba(243, 211, 104, 0.486);
+}
+
+.comment{
+    background-color:rgba(246, 223, 149, 0.293)
+}
